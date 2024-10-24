@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Lab_1
 {
@@ -46,6 +47,41 @@ namespace Lab_1
             compareSharpness(m);
             Console.WriteLine();
         }
+            public override string ToString()
+        {
+            return $"{model}";
+        }
+    }
+
+    public class Assistant
+    {
+        public string assistantName;
+        private List<Display> assignedDisplays; 
+
+        public Assistant(string assistantName, List<Display> assignedDisplays)
+        {
+            this.assistantName = assistantName;
+            this.assignedDisplays = assignedDisplays;
+        }
+        public void assignDisplay(Display d) // add display d into the list of displays
+        {
+            this.assignedDisplays.Add(d);
+        }
+        public void assist()
+        {
+            for (int i=0; i<(this.assignedDisplays.Count-1); i++)
+            {
+                for (int j=i+1; i<this.assignedDisplays.Count;i++)
+                {
+                    this.assignedDisplays[i].compareWithMonitor(this.assignedDisplays[j]);
+                }
+            }
+        }
+        public Display buyDisplay(Display d)
+        {
+            this.assignedDisplays.Remove(d);
+            return d;
+        }
     }
 
     class Program
@@ -55,9 +91,21 @@ namespace Lab_1
             Display Dell_Ultra = new Display(1920, 1080, 120.5f, "U272K4p");
             Display Asus_ProArt = new Display(2400, 1650, 100.1f, "PAQ78ARNG");
             Display Samsung_Odyssey = new Display(2400, 1650, 120.5f, "LCCPTR4003");
-            Dell_Ultra.compareWithMonitor(Asus_ProArt);
-            Dell_Ultra.compareWithMonitor(Samsung_Odyssey);
-            Samsung_Odyssey.compareWithMonitor(Asus_ProArt);
+            // Dell_Ultra.compareWithMonitor(Asus_ProArt);
+            // Dell_Ultra.compareWithMonitor(Samsung_Odyssey);
+            // Samsung_Odyssey.compareWithMonitor(Asus_ProArt);
+            List<Display> assignedDisplays_1 = new List<Display>
+            {
+                Dell_Ultra,
+                Asus_ProArt,
+                Samsung_Odyssey
+            };
+            Assistant assistant_1 = new Assistant("John_Doe", assignedDisplays_1);
+            assistant_1.assist();
+            Display Samsung_Odyssey_2 = new Display(2450, 1660, 80.9f, "LCCPTR5040");
+            assistant_1.assignDisplay(Samsung_Odyssey_2);
+            assistant_1.assist();
+            assistant_1.buyDisplay(Samsung_Odyssey_2);
         }
     }
 }
