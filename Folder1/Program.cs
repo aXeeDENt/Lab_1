@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-
 namespace Lab_1
 {
     public class Display
@@ -52,8 +51,8 @@ namespace Lab_1
             return $"{model}";
         }
     }
-
     public class Assistant
+
     {
         public string assistantName;
         private List<Display> assignedDisplays; 
@@ -86,7 +85,6 @@ namespace Lab_1
             return d;
         }
     }
-
     class Program
     {
         static void Main(string[] args)
@@ -94,20 +92,13 @@ namespace Lab_1
             Display Dell_Ultra = new Display(1920, 1080, 120.5f, "U272K4p");
             Display Asus_ProArt = new Display(2400, 1650, 100.1f, "PAQ78ARNG");
             Display Samsung_Odyssey = new Display(2400, 1650, 120.5f, "LCCPTR4003");
-            // Dell_Ultra.compareWithMonitor(Asus_ProArt);
-            // Dell_Ultra.compareWithMonitor(Samsung_Odyssey);
-            // Samsung_Odyssey.compareWithMonitor(Asus_ProArt);
-            List<Display> assignedDisplays_1 = new List<Display>
-            {
-                Dell_Ultra,
-                Asus_ProArt,
-                Samsung_Odyssey
-            };
+            List<Display> assignedDisplays_1 = new List<Display> {Dell_Ultra, Asus_ProArt, Samsung_Odyssey};
             Assistant assistant_1 = new Assistant("John_Doe", assignedDisplays_1);
             Display Samsung_Odyssey_2 = new Display(2450, 1660, 80.9f, "LCCPTR5040");
             assistant_1.assignDisplay(Samsung_Odyssey_2);
             assistant_1.buyDisplay(Asus_ProArt);
             assistant_1.assist();
+            
         }
     }
 }
