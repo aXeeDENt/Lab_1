@@ -69,11 +69,14 @@ namespace Lab_1
         }
         public void assist()
         {
-            for (int i=0; i<(this.assignedDisplays.Count-1); i++)
+            for (int i = 0; i < this.assignedDisplays.Count; i++)
             {
-                for (int j=i+1; i<this.assignedDisplays.Count;i++)
+                for (int j = i+1; j < this.assignedDisplays.Count; j++)
                 {
-                    this.assignedDisplays[i].compareWithMonitor(this.assignedDisplays[j]);
+                    if (i != j)
+                    {
+                        this.assignedDisplays[i].compareWithMonitor(this.assignedDisplays[j]);
+                    }
                 }
             }
         }
@@ -101,11 +104,10 @@ namespace Lab_1
                 Samsung_Odyssey
             };
             Assistant assistant_1 = new Assistant("John_Doe", assignedDisplays_1);
-            assistant_1.assist();
             Display Samsung_Odyssey_2 = new Display(2450, 1660, 80.9f, "LCCPTR5040");
             assistant_1.assignDisplay(Samsung_Odyssey_2);
+            assistant_1.buyDisplay(Asus_ProArt);
             assistant_1.assist();
-            assistant_1.buyDisplay(Samsung_Odyssey_2);
         }
     }
 }
