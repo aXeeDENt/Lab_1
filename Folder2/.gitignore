@@ -5,6 +5,7 @@
 *.suo
 *.user
 *.sln.docstates
+Folder2/net8.0
 
 # Build results
 
