@@ -63,17 +63,21 @@ namespace Lab_1
     {
         static void Main(string[] args)
         { 
-        if (args.Length == 0)
-        {
-            Console.WriteLine("Please provide the path to the .txt file:");
-            return;
-        }
-        // foreach (string filePath in args)
-        string filePath = args[0];
+            if (args.Length == 0)
+            {
+                Console.WriteLine("Please provide the path to the .txt file:");
+                return;
+            }
 
-        string fileContent = new FileReader().ReadFileIntoString(filePath);
-        TextData textData = new TextData(Path.GetFileName(filePath), fileContent);
-        Console.WriteLine(textData);
+            foreach (string filePath in args)
+            {
+                string fileContent = new FileReader().ReadFileIntoString(filePath);
+                TextData textData = new TextData(Path.GetFileName(filePath), fileContent);
+                Console.WriteLine(textData);
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine();
+            }
         }
     }
 }
